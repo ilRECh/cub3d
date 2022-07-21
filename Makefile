@@ -46,26 +46,7 @@ GNL						=	./src/get_next_line/gnl.a
 LIBFT_MAKE				=	./src/libft/
 LIBFT					=	./src/libft/libft.a
 
-GAME_ENGINE_LIST		=	colors.c\
-							draw_mini_map.c\
-							draw_perspective_wall.c\
-							draw_perspective.c\
-							game.c\
-							image_functions.c\
-							image_maker.c\
-							init.c\
-							key_handler.c\
-							pixel_get_put_color.c\
-							player_on_map.c\
-							set_plr_full.c\
-							utils_dpoint_math.c\
-							utils_dpoint.c\
-							utils_int.c\
-							utils_point_math.c\
-							utils_point.c\
-							utils_trigonometry.c\
-							wrappers.c\
-							start_game.c\
+GAME_ENGINE_LIST		=	
 
 GAME_ENGINE_DIR			=	src/game_engine/
 GAME_ENGINE				=	$(addprefix $(GAME_ENGINE_DIR), $(GAME_ENGINE_LIST))
@@ -73,15 +54,16 @@ GAME_ENGINE				=	$(addprefix $(GAME_ENGINE_DIR), $(GAME_ENGINE_LIST))
 PARSE_LIST				=	parse.c\
 							setup_all.c\
 							cleaning.c\
-							setup_params/setup_params.c\
-							setup_params/setup_params_additional.c\
-							setup_params/setup_missing.c\
-							setup_map/setup_map.c\
-							setup_map/check_symbols.c\
-							setup_map/make_map_from_lst.c\
-							setup_map/spaces_to_walls.c\
-							setup_map/check_closed.c\
-							setup_map/check_extra_regions.c
+							setup_params.c\
+							setup_params_additional.c\
+							setup_missing.c\
+							setup_map.c\
+							check_symbols.c\
+							make_map_from_lst.c\
+							spaces_to_walls.c\
+							check_closed.c\
+							check_extra_regions.c\
+
 PARSE_DIR				=	./src/parse/
 PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))
 
