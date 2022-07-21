@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:48:24 by name              #+#    #+#             */
-/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 17:03:24 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ static bool    check_map_start(char **split)
     j = -1;
     while (split[++i])
     {
-        while (split[i][++j] == '1' || split[i][j] == '0')
-            ;
+        while (split[i][++j] == STANDARD_WALL_SYM || split[i][j] == STANDARD_FIELD_SYM);
         if (split[i][j])
             return (false);
     }

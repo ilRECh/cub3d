@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 15:03:33 by name              #+#    #+#             */
-/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 16:53:22 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ bool    parse(t_all *all, int fd)
     {
         ret = get_next_line(fd, &line);
         if (ret < 0)
-            return ((all->err
-                    = ft_strdup("file corrupted while reading")), true);
+        {
+            all->err = ft_strdup("file corrupted while reading");
+            return (true);
+        }
+        
         ft_lstadd_backD(&lst.Dstart, line);
         if (ret == 0)
             break ;

@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2022/07/21 13:52:36 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 18:05:45 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,24 +61,24 @@ typedef enum s_align
 
 typedef struct s_point // структура для точки | и размеров
 {
-    int    x;
-    int    y;
+    int x;
+    int y;
 }    t_point;
 
 typedef struct s_dpoint // структура для точки | и размеров
 {
-    double    x;
-    double    y;
+    double x;
+    double y;
 }    t_dpoint;
 
 typedef struct s_image // структура для изображений
 {
     void    *img;
     void    *addr;
-    t_point    size;
-    int        bits_per_pixel;
-    int        line_length;
-    int        endian;
+    t_point size;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
 }    t_image;
 
 typedef struct s_window //структура для окна
@@ -87,9 +87,9 @@ typedef struct s_window //структура для окна
     void    *win;
     void    *img;
     void    *addr;
-    int        line_l;
-    int        bpp;
-    int        en;
+    int     line_l;
+    int     bpp;
+    int     en;
 }    t_window;
 
 typedef struct s_player //структура для игрока и луча
@@ -110,12 +110,11 @@ typedef struct s_all // структура для всего вместе
     t_image    *img_map;
     t_point    screen_size;
     char    **textures;
-    int        **colors;
+    int     **colors;
     char    **map;
-    int        scale;
-    int        map_length;
-    int        map_height;
-    t_point    map_size;
+    int     scale;
+    int     map_length;
+    int     map_height;
     struct s_plrpos
     {
         int        x;
@@ -124,13 +123,6 @@ typedef struct s_all // структура для всего вместе
     }        plrpos;
     char    *err;
 }    t_all;
-
-typedef struct s_project_plane
-{
-    t_dpoint    project;
-    double        width;
-    double        coef;
-}    t_project_plane;
 
 ///
 ///    PARSING
@@ -148,21 +140,19 @@ bool        make_map_from_lst(t_all *all, t_list *lst);
 bool        check_symbols(t_all *all, t_list *lst);
 bool        check_closed(t_all *all);
 void        spaces_to_walls(t_all *all);
-bool        check_extra_regions(t_all *all);
 
 ///
 /// CLEANING
 ///
-bool        fl(t_list *lst);
-bool        flf(t_list *lst, int fd);
-bool        fs(char **split);
-bool        fall(t_all *all);
+bool flf(t_list *lst, int fd);
+bool fs(char **split);
+void shutdown(t_all *all, int status);
 
 //
 // game
 //
-int            cub3d(char *map);
-void        game(t_all *all);
+void        cub3d(char *map);
+bool        game(t_all *all);
 int            close_x(void);
 void        key_handler(int key_code, t_all *all);
 // img map

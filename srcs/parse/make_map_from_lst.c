@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 09:43:57 by name              #+#    #+#             */
-/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 17:28:40 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,35 +72,41 @@ static inline bool    make_new_map(t_all *all, int height, int length)
 
 static inline void    duplicate_map(t_all *all, t_list *lst)
 {
-    int    i;
+    int i;
 
     i = 0;
     lst->Dcur = lst->Dstart;
     while (lst->Dcur)
     {
-        ft_memcpy(all->map[++i] + 1,
-            lst->Dcur->content, ft_strlen(lst->Dcur->content));
+        ft_memcpy(all->map[++i] + 1, lst->Dcur->content, ft_strlen(lst->Dcur->content));
         lst->Dcur = lst->Dcur->next;
     }
 }
 
 bool    make_map_from_lst(t_all *all, t_list *lst)
 {
-    int    height;
-    int    length;
+    int height;
+    int length;
 
     if (check_for_empty_lines(lst))
-        return ((all->err
-                = ft_strdup("the map contains empty lines."
-                    " Unforgivable. Shame on you.")), true);
+    {
+        all->err = ft_strdup("the map contains empty lines. Unforgivable. Shame on you.");
+        return (true);
+    }
+
     if (check_symbols(all, lst))
         return (true);
+
     find_height_length(lst, &height, &length);
     all->map_height = height;
     all->map_length = length;
+    
     if (make_new_map(all, height, length))
-        return ((all->err
-                = ft_strdup("no space left on the device")), true);
+    {
+        all->err = ft_strdup("no space left on the device");
+        return (true);
+    }
+    
     duplicate_map(all, lst);
     return (false);
 }
