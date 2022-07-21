@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2022/07/22 00:17:54 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/22 00:55:32 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ typedef struct s_player
 
 typedef struct s_all // структура для всего вместе
 {
+    void *mlx;
+    void *mlx_win;
     t_window *win;
     t_point screen_size;
     char **textures;
