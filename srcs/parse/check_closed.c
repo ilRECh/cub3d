@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 22:25:24 by name              #+#    #+#             */
-/*   Updated: 2022/07/21 13:53:45 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 22:22:56 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ bool    check_closed(t_all *all)
         while (all->map[i][++j])
         {
             if (all->map[i][j] == STANDARD_FIELD_SYM
-                || all->map[i][j] == all->plrpos.direction)
+                || all->map[i][j] == all->parsing_player_position.direction)
                 if (check(i, j, all, true))
                     return (true);
         }

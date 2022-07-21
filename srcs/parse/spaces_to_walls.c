@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 12:07:54 by name              #+#    #+#             */
-/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 22:22:56 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void    fill_outer(int height, int length, t_all *all)
     if (height < 0 || length < 0
         || height > all->map_height + 1 || length > all->map_length + 1
         || all->map[height][length] == '1' || all->map[height][length] == '0'
-        || all->map[height][length] == all->plrpos.direction
+        || all->map[height][length] == all->parsing_player_position.direction
         || all->map[height][length] == 'M')
         return ;
     all->map[height][length] = 'M';

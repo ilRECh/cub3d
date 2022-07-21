@@ -6,20 +6,13 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 15:04:26 by name              #+#    #+#             */
-/*   Updated: 2022/07/21 13:47:22 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 22:22:56 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static inline void    i_hate_norminette(t_all *all, char *line, int i, int j)
-{
-    all->plrpos.direction = line[j];
-    all->plrpos.x = j + 1;
-    all->plrpos.y = i + 1;
-}
-
-static bool    check(t_all *all, char *line, int i)
+static bool check(t_all *all, char *line, int i)
 {
     int        j;
     char    tmp[2];
@@ -34,12 +27,16 @@ static bool    check(t_all *all, char *line, int i)
                 && line[j] != 'N' && line[j] != 'S')
                 return ((all->err = ft_strjoin("wrong character appeared: ",
                             ((line[j + 1] = 0), line + j))), true);
-            else if (!all->plrpos.direction)
-                i_hate_norminette(all, line, i, j);
+            else if (!all->parsing_player_position.direction)
+            {
+                all->parsing_player_position.direction = line[j];
+                all->parsing_player_position.x = j + 1;
+                all->parsing_player_position.y = i + 1;
+            }
             else
                 return ((all->err
                         = ft_strjoin("there can be only one player, it is ",
-                            (tmp[0] = all->plrpos.direction, tmp))), true);
+                            (tmp[0] = all->parsing_player_position.direction, tmp))), true);
         }
     }
     return (false);
@@ -58,7 +55,7 @@ bool    check_symbols(t_all *all, t_list *lst)
         lst->Dcur = lst->Dcur->next;
         i++;
     }
-    if (!all->plrpos.direction)
+    if (!all->parsing_player_position.direction)
         return ((all->err = ft_strdup("there is no player")), true);
     return (false);
 }

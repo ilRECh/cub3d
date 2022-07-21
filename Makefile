@@ -46,24 +46,9 @@ GNL						=	./srcs/get_next_line/gnl.a
 LIBFT_MAKE				=	./srcs/libft/
 LIBFT					=	./srcs/libft/libft.a
 
-GAME_ENGINE_LIST		=	start_game.c\
+GAME_ENGINE				=	$(shell find srcs/game_engine/* | grep "\.c")
 
-GAME_ENGINE_DIR			=	srcs/game_engine/
-GAME_ENGINE				=	$(addprefix $(GAME_ENGINE_DIR), $(GAME_ENGINE_LIST))
-
-PARSE_LIST				=	parse.c\
-							cleaning.c\
-							setup_params.c\
-							setup_params_additional.c\
-							setup_missing.c\
-							setup_map.c\
-							check_symbols.c\
-							make_map_from_lst.c\
-							spaces_to_walls.c\
-							check_closed.c\
-
-PARSE_DIR				=	./srcs/parse/
-PARSE					=	$(addprefix $(PARSE_DIR), $(PARSE_LIST))
+PARSE					=	$(shell find srcs/parse/* | grep "\.c")
 
 OBJS					=	$(PARSE:.c=.o) main.o $(GAME_ENGINE:.c=.o)
 

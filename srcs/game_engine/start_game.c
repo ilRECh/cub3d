@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:20:05 by ilRECh            #+#    #+#             */
-/*   Updated: 2022/07/21 17:58:57 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/21 22:22:56 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ bool setup_all(t_all *all)
     all->colors = ft_calloc(7, sizeof(unsigned char *));
     if (!all->colors)
         return (true);
-    all->plrpos.direction = 0;
-    all->plrpos.x = -1;
-    all->plrpos.y = -1;
+    all->parsing_player_position.direction = 0;
+    all->parsing_player_position.x = -1;
+    all->parsing_player_position.y = -1;
     all->map = NULL;
     all->err = NULL;
     return (false);
@@ -49,7 +49,7 @@ int check_map_file(char *map)
     return (fd);
 }
 
-void cub3d(char *map)
+void run(char *map)
 {
     static t_all all = {0};
 
@@ -62,6 +62,12 @@ void cub3d(char *map)
     if (parse(&all, check_map_file(map)))
     {
         printf(RED "Error\n" RESET "invalid file formatting: %s\n", map);
+        shutdown(&all, EXIT_FAILURE);
+    }
+
+    if (initialize_game(&all))
+    {
+        printf(RED "Error\n" RESET "initialization failed\n");
         shutdown(&all, EXIT_FAILURE);
     }
 }
