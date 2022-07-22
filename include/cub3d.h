@@ -6,12 +6,15 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2022/07/22 00:55:32 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/22 12:09:53 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 # include <stdio.h>
 # include <unistd.h>
@@ -24,29 +27,9 @@
 # define STANDARD_FIELD_SYM '0'
 # define STANDARD_WALL_SYM '1'
 
-#ifdef __linux__
-#define KEY_W 119
-#define KEY_A 97
-#define KEY_S 115
-#define KEY_D 100
-#define KEY_ESC 65307
-#elif defined (__APPLE__)
-#define KEY_W 13
-#define KEY_A 2
-#define KEY_S 1
-#define KEY_D 0
-#define KEY_ESC 53
-#endif
-
 ///
 ///    DATA
 ///
-typedef struct s_point // структура для точки | и размеров
-{
-    int x;
-    int y;
-} t_point;
-
 typedef struct s_dpoint // структура для точки | и размеров
 {
     double x;
@@ -57,7 +40,6 @@ typedef struct s_image // структура для изображений
 {
     void *img;
     void *addr;
-    t_point size;
     int bits_per_pixel;
     int line_length;
     int endian;
@@ -87,14 +69,14 @@ typedef struct s_all // структура для всего вместе
 {
     void *mlx;
     void *mlx_win;
-    t_window *win;
-    t_point screen_size;
     char **textures;
     int **colors;
     char **map;
     int map_length;
     int map_height;
-    t_point map_size;
+    int screen_sizex;
+    int screen_sizey;
+    t_image img;
     struct s_plrpos
     {
         int x;
@@ -128,6 +110,7 @@ void spaces_to_walls(t_all *all);
 bool flf(t_list *lst, int fd);
 bool fs(char **split);
 void shutdown(t_all *all, int status);
+int hook_exit(void *all);
 
 //
 // GAME

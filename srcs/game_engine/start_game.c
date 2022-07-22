@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:20:05 by ilRECh            #+#    #+#             */
-/*   Updated: 2022/07/21 22:22:56 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/22 11:46:55 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 bool setup_all(t_all *all)
 {
+    ft_bzero(all, sizeof(t_all));
     all->textures = ft_calloc(7, sizeof (char *));
     if (!all->textures)
         return (true);
@@ -23,8 +24,6 @@ bool setup_all(t_all *all)
     all->parsing_player_position.direction = 0;
     all->parsing_player_position.x = -1;
     all->parsing_player_position.y = -1;
-    all->map = NULL;
-    all->err = NULL;
     return (false);
 }
 
