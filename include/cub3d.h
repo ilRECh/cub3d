@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 12:36:39 by name              #+#    #+#             */
-/*   Updated: 2022/07/22 12:09:53 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/22 17:27:47 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,12 @@ void spaces_to_walls(t_all *all);
 bool flf(t_list *lst, int fd);
 bool fs(char **split);
 void shutdown(t_all *all, int status);
+
+///
+/// HOOKS
+///
+int hook_key_press(int key_code, t_all *all);
+int hook_key_release(int key_code, t_all *all);
 int hook_exit(void *all);
 
 //

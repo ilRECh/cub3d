@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:26:25 by name              #+#    #+#             */
-/*   Updated: 2022/07/22 12:42:07 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/22 17:58:51 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void shutdown(t_all *all, int status)
 {
     int i;
 
+    mlx_do_key_autorepeaton(all->mlx);
     if (all)
     {
         if (all->err)
