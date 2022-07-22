@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 22:26:55 by ilRECh            #+#    #+#             */
-/*   Updated: 2022/07/22 12:12:41 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/22 12:23:44 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool initialize_game(t_all *all)
 	mlx_do_key_autorepeatoff(all->mlx);
 	// mlx_hook(all->mlx, KeyPress, KeyPressMask, hook_key_press, all);
 	// mlx_hook(all->mlx, KeyRelease, KeyReleaseMask, hook_key_release, all);
-	mlx_hook(all->mlx, DestroyNotify, StructureNotifyMask, hook_exit, all);		
+	mlx_hook(all->mlx_win, DestroyNotify, StructureNotifyMask, hook_exit, all);		
 	mlx_loop_hook(all->mlx, render_next_frame, all);
     mlx_loop(all->mlx);
     return (false);

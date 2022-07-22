@@ -6,7 +6,7 @@ NAME					=	cub3d
 RM						=	rm -rf
 GCC						=	gcc
 AR						=	ar -crs
-FLAGS					=	-Wall -Wextra -Werror -c
+FLAGS					=	-Wall -Wextra -Werror -c -g
 
 ifeq ($(OS), Darwin)
 LINKS += -framework OpenGL -framework AppKit

@@ -6,7 +6,7 @@
 /*   By: ilRECh <ilRECh@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:26:25 by name              #+#    #+#             */
-/*   Updated: 2022/07/22 12:06:30 by ilRECh           ###   ########.fr       */
+/*   Updated: 2022/07/22 12:42:07 by ilRECh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ void shutdown(t_all *all, int status)
         free(all->err);
         if (all->mlx)
         {
-            mlx_destroy_image(all->mlx, all->img.img);
-            mlx_destroy_window(all->mlx, all->mlx_win);
-            mlx_destroy_display(all->mlx);
+            if (all->img.img)
+                mlx_destroy_image(all->mlx, all->img.img);
+            if (all->mlx_win)
+                mlx_destroy_window(all->mlx, all->mlx_win);
         }
     }
     exit(status);
